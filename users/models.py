@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 import random
 import string
@@ -14,12 +14,14 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=20, unique=True)
     invite_code = models.CharField(max_length=6, unique=True, blank=True)
     activated_code = models.ForeignKey(
         'self', on_delete=models.SET_NULL, null=True, blank=True, related_name='referrals'
     )
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'phone'
     objects = UserManager()
