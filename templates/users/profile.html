@@ -1,0 +1,22 @@
+<h2>Ваш профиль</h2>
+<p>Телефон: {{ user.phone }}</p>
+<p>Ваш инвайт-код: <b>{{ user.invite_code }}</b></p>
+
+{% if user.activated_code %}
+<p>Вы активировали код: <b>{{ user.activated_code.invite_code }}</b></p>
+{% else %}
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="invite_code" placeholder="Ввести чужой код">
+  <button type="submit">Активировать</button>
+</form>
+{% endif %}
+
+<h3>Ваши рефералы:</h3>
+<ul>
+  {% for ref in referrals %}
+  <li>{{ ref.phone }}</li>
+  {% empty %}
+  <li>Нет приглашённых пользователей</li>
+  {% endfor %}
+</ul>

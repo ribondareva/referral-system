@@ -1,0 +1,6 @@
+<h2>Вход по номеру</h2>
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="phone" placeholder="Введите номер">
+  <button type="submit">Отправить код</button>
+</form>
