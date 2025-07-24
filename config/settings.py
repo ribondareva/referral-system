@@ -12,7 +12,7 @@ SECRET_KEY = 'django-insecure-_r#hpwcrx5^z&ft6(=h3ss@=vkv#&@h!$kq4j!afw1=84#!ne1
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mariabondareva.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 
 INSTALLED_APPS = [
@@ -27,6 +27,12 @@ INSTALLED_APPS = [
     'users',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -86,6 +92,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'users.User'
+LOGIN_URL = '/login/'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -97,5 +104,5 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
