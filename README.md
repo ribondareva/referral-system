@@ -56,5 +56,5 @@ python manage.py runserver
 
 ### Демо 
 ```
-http://yourusername.pythonanywhere.com/
+https://mariabondareva.pythonanywhere.com/
 ```
