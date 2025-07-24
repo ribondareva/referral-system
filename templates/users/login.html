@@ -1,6 +1,7 @@
 <h2>Вход по номеру</h2>
-<form method="post">
+<form method="post" action="{% url 'login' %}">
   {% csrf_token %}
   <input type="text" name="phone" placeholder="Введите номер">
+  <input type="hidden" name="next" value="{{ request.GET.next }}">
   <button type="submit">Отправить код</button>
 </form>
